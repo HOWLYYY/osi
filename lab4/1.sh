@@ -19,8 +19,8 @@ then
 	mkdir .trash
 fi
 
-tr=".trash/"
-ln "$1" $tr$(date +"%s")
+tr=".trash/"$(date +"%s")
+ln "$1" $tr
 
-echo $(readlink -f $1) $b  >> .trash.log
+echo $1 $tr  >> .trash.log
 rm $1
