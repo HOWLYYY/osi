@@ -3,7 +3,7 @@ IFS=$'\n'
 
 if [[ $# != 1 ]]; then
     echo "Only 1 argument expected"
-    exit 0
+    exit 1;
 fi
 
 FILENAME="$1"
@@ -13,7 +13,6 @@ TRASH_LOG_PATH="$HOME/.trash.log"
 
 LOG_DATA=$(cat "$TRASH_LOG_PATH")
 
-#echo "$LOG_DATA"
 
 for line in $LOG_DATA
 do
@@ -37,9 +36,8 @@ do
              rm "$TRASH_DIR_PATH/$LNNAME"
              sed -i "/$LNNAME/d" "$TRASH_LOG_PATH"
              echo "SUCCESS"
-             exit 1;
+             exit 0
         fi
         echo "$answer"
     fi    
-    #echo "$line" | sed -e '/\s[^\s]+?$/d'
 done
