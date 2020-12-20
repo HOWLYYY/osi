@@ -20,7 +20,7 @@ then
 fi
 
 tr=".trash/"
-ln "$1" $(date +"%s")
+ln "$1" $tr$(date +"%s")
 
 echo $(readlink -f $1) $b  >> .trash.log
 rm $1
