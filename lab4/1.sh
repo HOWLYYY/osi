@@ -20,16 +20,7 @@ then
 fi
 
 tr=".trash/"
-b=$(find ".trash/" -type f -name "[1-9]" | sed -e 's,.trash/,,')
-b=$(echo $b | awk '{print NF}')
-#echo $b
-if [ -z $b ]
-then
-	ln "/home/user/lab4/"$1 "/home/user/lab4/.trash/1"
-else
-	b=$(($b + 1))
-	ln "/home/user/lab4/"$1 "/home/user/lab4/.trash/"$b
-fi
+ln "$1" $(date +"%s")
 
 echo $(readlink -f $1) $b  >> .trash.log
 rm $1
