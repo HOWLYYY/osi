@@ -2,19 +2,19 @@
 
 if [[ $# > 1 ]]; then
         echo "Много аргументов"
-        exit 404
+        exit 69
 fi
 if [[ $# != 1 ]]; then
         echo "Мало аргументов"
-        exit 404
+        exit 69
 fi
 
 if [[ ! -f $1 ]]; then
         echo "Такого файла нет."
-        exit 404
+        exit 1
 fi
 dir=".trash"
-if [[ ! -e $dir ]]
+if [[ ! -d $dir ]]
 then
 	mkdir .trash
 fi
