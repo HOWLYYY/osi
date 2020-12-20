@@ -1,12 +1,12 @@
 #!/bin/bash
 IFS=$'\n'
 
-FILENAME="$1"
-
 if [[ $# != 1 ]]; then
     echo "Only 1 argument expected"
     exit 0
 fi
+
+FILENAME="$1"
 
 TRASH_DIR_PATH="$HOME/.trash"
 TRASH_LOG_PATH="$HOME/.trash.log"
