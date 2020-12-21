@@ -31,15 +31,12 @@ LNNAME="$timestamp"
 cnt=1
 while(true)
 do
-#echo "$TRASH_DIR_PATH/$LNNAME"_"$cnt"
 if [[ ! -f "$TRASH_DIR_PATH/$LNNAME"_"$cnt" ]]; then
     LNNAME="$LNNAME"_"$cnt"
     break
 fi
 cnt=$((cnt+1))
 done
-
-#echo "$LNNAME"
 
 ln "$FILE_PATH" "$TRASH_DIR_PATH/$LNNAME"
 echo "$FILE_PATH $LNNAME" >> $TRASH_LOG_PATH
