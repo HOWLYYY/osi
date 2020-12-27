@@ -5,7 +5,7 @@ do
 	read str
 	case "$str" in
 		"TERM")
-			kill -15 $1
+			kill -SIGTERM $1
 			exit 0
 		;;
 		"+")
