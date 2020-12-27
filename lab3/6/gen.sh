@@ -1,12 +1,11 @@
 #!/bin/bash
 
-
 while true; 
 do
 	read str
 	case "$str" in
 		"TERM")
-			kill -SIGTERM $1
+			kill -15 $1
 			exit 0
 		;;
 		"+")
