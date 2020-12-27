@@ -1,38 +1,37 @@
 #!/bin/bash
 
-ans=1 #Default value
-type="+" #Default value
+ans=1 
+type="+"
 
-TERM() 
+sigterm() 
 {
-	echo "script is down"
 	exit 0
 }
 
-SIG1() 
+usr_1() 
 {
 	type="+"
 }
 
-SIG2() 
+usr_2() 
 {
 	type="*"
 }
 
-trap 'TERM' SIGTERM
-trap 'SIG1' USR1
-trap 'SIG2' USR2
+trap 'sigterm' SIGTERM
+trap 'usr_1' USR1
+trap 'usr_2' USR2
 
 while true; 
 do
 	case "$type" in
 		"+")
-			ans=$(echo "${ans} + 2" | bc)
+			let ans=$ans+2
 		;;
 		"*")
-			ans=$(echo "${ans} * 2" | bc)
+			let ans=$ans*2
 		;;
 	esac
-		sleep 2
 		echo $ans
+		sleep 2
 done
