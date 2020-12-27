@@ -1,7 +1,7 @@
 #!/bin/bash
 
-value=1 #Default value
-type="+" #Default value
+value=1 
+type="+"
 tail -f buffer |
 while true; do
 	read str
