@@ -1,7 +1,7 @@
 #!/bin/bash
 
-path="/home/user/lab3"
-dates=$(date '+%F_%T')
+timenow=$(date '+%d.%m.%y_%H:%M')
 
-mkdir $path/test && { echo "catalog test was created successfully" > $path/report ; touch $path/test/$dates ; }
-ping www.net_nikogo.ru || echo "${dates} ping error" >> $path/report
+mkdir ~/test 2>/dev/null && echo "catalog test was created successfully" > ~/report && \
+touch $timenow || ping -c 2 www.net_nikogo.ru 2>/dev/null || \ 
+echo "${timenow} not reachable" >> ~report
