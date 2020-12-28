@@ -1,3 +1,3 @@
 #!bin/bash
 
-ps -eo pid,ppid,lstart --sort=start_time | awk '{ if ($2 != "$$") print $1 }' | tail -n 1 > lab3_res.txt
+ps aux | sort -k9 | tail -n 2 | head -n 1 | awk '{print $2}' >lab3_res.txt
