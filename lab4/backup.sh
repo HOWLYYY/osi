@@ -1,10 +1,11 @@
 #!/bin/bash
 
-datenow=$(date +'%Y/%m/%d')
-lastback=$(ls ~ | grep "Backup-" | sort -n | tail -1 | cut -d "-" -f 2)
+datenow=$(date +'%Y-%m-%d')
+lastback=$(ls ~ | grep "Backup-" | sort -n | tail -1 | cut -d "-" -f 2,3,4)
 datenowsec=$(date -d "$datenow" +%s)
 lastbacksec=$(date -d "$lastback" +%s)
 let diff=($datenowsec-$lastbacksec)/60/60/24
+[[ "$lastback" == "" ]] && diff=8
 AddFilesToBackup(){
 	Source=$(ls ~/source)
 	for file in $Source;
@@ -28,10 +29,10 @@ AddFilesToBackup(){
 }
 if [[ $diff -gt 7 ]];
 then
-	mkdir "home/user/Backup-$datenow"
+	mkdir "~/Backup-$datenow"
 	cp -a ~/source/. ~/Backup-$datenow
 	echo "Backup-$datenow was created" >>~/backup-report
-	ls ~/source >>~/backup-report
+	ls source >>~/backup-report
 else
 	AddFilesToBackup
 fi
